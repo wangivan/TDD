@@ -10,6 +10,9 @@ class myTestSuite(unittest.TestCase):
         pass
 
     def prime(self, number):
+        if( number == 4 ):
+            return [2,2]
+
         if( number > 1 ):
             return [number]
 
@@ -23,5 +26,9 @@ class myTestSuite(unittest.TestCase):
 
     def test_3_return_3(self):
         self.assertEqual(self.prime(3),[3])
+
+    def test_4_return_2_2(self):
+        self.assertEqual(self.prime(4),[2,2])
+
 if __name__ == "__main__":
     unittest.main()
