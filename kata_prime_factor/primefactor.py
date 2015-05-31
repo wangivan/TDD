@@ -10,10 +10,15 @@ class myTestSuite(unittest.TestCase):
         pass
 
     def prime(self, number):
-        return [] 
+        if( number == 2 ):
+            return [2] 
+        return []
 
     def test_1_return_empty(self):
         self.assertEqual(self.prime(1),[])
+
+    def test_2_return_empty(self):
+        self.assertEqual(self.prime(2),[2])
 
 if __name__ == "__main__":
     unittest.main()
