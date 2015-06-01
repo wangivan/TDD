@@ -8,13 +8,18 @@ class myTestSuite(unittest.TestCase):
         pass
 
     def number2roman(self, number):
+	if(number<=0):
+	    return "";
+
 	preset_roman = {1:"I",5:"V",10:"X",50:"L",100:"C",500:"D"}
 	if(preset_roman.has_key(number)):
 	    return preset_roman[number]
-	if( 5-number==1):
-	    return "".rjust(5-number,preset_roman[1]) + preset_roman[5] 
-	if( number-1<=2 and number-1>0):
-	    return preset_roman[1] + "".ljust(number-1,preset_roman[1])
+
+	for key in preset_roman.keys():
+	    if( number-key<=2 and number-key>0):
+		return preset_roman[key] + "".ljust(number-key,"I")
+	    if( key-number==1):
+		return "".rjust(1,"I") + preset_roman[key] 
 	return "";
 
     def test_0_return_empty(self):
@@ -46,6 +51,9 @@ class myTestSuite(unittest.TestCase):
 
     def test_3_return_III(self):
         self.assertEqual(self.number2roman(4), "IV")
+
+    def test_3_return_III(self):
+        self.assertEqual(self.number2roman(6), "VI")
 
 if __name__ == "__main__":
     unittest.main()
